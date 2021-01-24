@@ -11,3 +11,76 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.books {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.book {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 14px;
+  width: 150px;
+  min-height: 300px;
+}
+
+.book-title {
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 6px;
+}
+
+.book-description {
+  color: rgb(32, 32, 32);
+  padding-bottom: 6px;
+}
+
+.book-total,
+.book-author {
+  font-size: 13px;
+  padding-bottom: 6px;
+}
+
+.new-book-form {
+  margin: 0 auto;
+  width: 320px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+input[type=text],
+input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+@media only screen and (max-width: 1024px) {
+  .books {
+    width: 100%;
+    flex-flow: wrap;
+  }
+}

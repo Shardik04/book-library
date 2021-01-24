@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import store from "./store";
+import { Provider } from "react-redux";
+import { useDispatch } from "react-redux";
+import { BookLibrary } from "./BookLibrary";
+import AddNewBook from "./features/addNewBook";
+import { fetchAllBooks } from "./services/bookFetchService.js";
+import { addNewBook } from "./bookLibrarySlice";
+
+function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchAllBooks().then((books) => {
+      dispatch(addNewBook(books));
+    });
+  });
+
+  return (
+    <div className="books">
+      <BookLibrary />
+      <AddNewBook />
+    </div>
+  );
+}
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
