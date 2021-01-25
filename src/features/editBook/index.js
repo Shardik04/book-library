@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { FormField } from "../../common/formField";
-import { useDispatch } from "react-redux";
-import { addNewBook } from "../../bookLibrarySlice";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { allBooks, addNewBook } from "../../bookLibrarySlice";
 
-export default function AddNewBook() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [total, setTotal] = useState(0);
-  const [author, setAuthor] = useState("");
+export default function EditBook() {
+  const books = useSelector(allBooks);
+  const { id } = useParams();
+  const book = books.filter((item) => id === item.isbn)?.[0];
+  //   const { title, description, total, author } = book;
+
+  const [title, setTitle] = useState(book.title);
+  const [description, setDescription] = useState(book.description);
+  const [total, setTotal] = useState(book.total);
+  const [author, setAuthor] = useState(book.author);
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -36,10 +41,16 @@ export default function AddNewBook() {
     if (!title || !description || !total || !author) {
       return;
     }
-    let isbn = `978159327${Math.floor(Math.random() * 100)}`;
+    // let isbn = `978159327${Math.floor(Math.random() * 100)}`;
 
-    const book = { title, description, total, author, isbn };
-    dispatch(addNewBook(book));
+    // const book = { title, description, total, author, isbn: id };
+    let BOOKS = [...books];
+    const index = BOOKS.findIndex((element) => element.isbn === id);
+    console.log(index);
+    console.log(BOOKS[index]);
+    BOOKS[index] = { ...BOOKS[index], title, description, total, author };
+    console.log(BOOKS);
+    dispatch(addNewBook(BOOKS));
   };
 
   return (
@@ -82,7 +93,7 @@ export default function AddNewBook() {
         required
       />
       <button type="submit" label="Submit" className="button">
-        Add New Book
+        Edit Book
       </button>
     </form>
   );

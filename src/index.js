@@ -6,8 +6,24 @@ import { Provider } from "react-redux";
 import { useDispatch } from "react-redux";
 import { BookLibrary } from "./BookLibrary";
 import AddNewBook from "./features/addNewBook";
+import Header from "./features/header";
+import EditBook from "./features/editBook";
 import { fetchAllBooks } from "./services/bookFetchService.js";
 import { addNewBook } from "./bookLibrarySlice";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+const Routing = () => {
+  return (
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={AddNewBook} />
+        <Route path="/allbooks" component={BookLibrary} />
+        <Route path="/:id/edit" component={EditBook} />
+      </Switch>
+    </Router>
+  );
+};
 
 function App() {
   const dispatch = useDispatch();
@@ -20,8 +36,7 @@ function App() {
 
   return (
     <div className="books">
-      <BookLibrary />
-      <AddNewBook />
+      <Routing />
     </div>
   );
 }

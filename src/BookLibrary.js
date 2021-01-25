@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { allBooks } from "./bookLibrarySlice";
+import { Link } from "react-router-dom";
 
 function Book(props) {
-  const { title, description, total, author } = props.book;
+  const { title, description, total, author, isbn } = props.book;
+  const EDIT_PATH = `/${isbn}/edit`;
   return (
     <div className="book">
       <div className="book-title">{title}</div>
@@ -11,6 +13,11 @@ function Book(props) {
         Total No of book: <b>{total}</b>
       </div>
       <div className="book-author">Author: {author}</div>
+      <div>
+        <Link to={EDIT_PATH} style={{ textDecoration: "none" }}>
+          Edit {isbn}
+        </Link>
+      </div>
     </div>
   );
 }
