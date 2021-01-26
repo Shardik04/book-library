@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import store from "./store";
-import { Provider } from "react-redux";
-import { useDispatch } from "react-redux";
-import BookList from "./features/bookList";
-import AddNewBook from "./features/addNewBook";
-import Header from "./features/header";
-import EditBook from "./features/editBook";
-import { fetchAllBooks } from "./services/bookFetchService.js";
-import { addNewBook } from "./bookLibrarySlice";
+import store from "./store/index";
+import { Provider, useDispatch } from "react-redux";
+import BookList from "./features/BookList";
+import AddNewBook from "./features/AddNewBook";
+import Header from "./features/Header";
+import EditBook from "./features/EditBook";
+import { fetchAllBooks } from "./services/BookFetchService";
+import { addNewBook } from "./store/Library";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Routing = () => {

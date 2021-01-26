@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { FormField } from "../../common/formField";
+import { FormField } from "../../common/FormField";
 import { useDispatch } from "react-redux";
-import { addNewBook } from "../../bookLibrarySlice";
-import { Link } from "react-router-dom";
+import { addNewBook } from "../../store/Library";
 
 export default function AddNewBook() {
   const [title, setTitle] = useState("");

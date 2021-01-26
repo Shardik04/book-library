@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import libraryReducer from "./bookLibrarySlice";
+import libraryReducer from "./Library";
 
 export default configureStore({
   reducer: {

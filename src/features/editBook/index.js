@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { FormField } from "../../common/formField";
+import { FormField } from "../../common/FormField";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { allBooks, addNewBook } from "../../bookLibrarySlice";
+import { allBooks, addNewBook } from "../../store/Library";
 
 export default function EditBook() {
   const books = useSelector(allBooks);
   const { id } = useParams();
   const book = books.filter((item) => id === item.isbn)?.[0];
-  //   const { title, description, total, author } = book;
 
   const [title, setTitle] = useState(book.title);
   const [description, setDescription] = useState(book.description);
@@ -41,15 +40,10 @@ export default function EditBook() {
     if (!title || !description || !total || !author) {
       return;
     }
-    // let isbn = `978159327${Math.floor(Math.random() * 100)}`;
 
-    // const book = { title, description, total, author, isbn: id };
     let BOOKS = [...books];
     const index = BOOKS.findIndex((element) => element.isbn === id);
-    console.log(index);
-    console.log(BOOKS[index]);
     BOOKS[index] = { ...BOOKS[index], title, description, total, author };
-    console.log(BOOKS);
     dispatch(addNewBook(BOOKS));
   };
 

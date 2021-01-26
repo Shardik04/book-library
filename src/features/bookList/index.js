@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { allBooks, searchedText } from "../../bookLibrarySlice";
-import SearchBar from "../searchBar";
-import Book from "../../common/book";
+import { allBooks, searchedText } from "../../store/Library";
+import SearchBar from "../SearchBar";
+import Book from "../../common/Book";
 
 export default function BookList() {
   const books = useSelector(allBooks);

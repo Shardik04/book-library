@@ -13,7 +13,7 @@ export function FormField({
   ...props
 }) {
   return (
-    <React.Fragment>
+    <>
       <label htmlFor={name}>{label}</label>
       <input
         id={name}
@@ -25,7 +25,7 @@ export function FormField({
         className={className}
         required
       />
-    </React.Fragment>
+    </>
   );
 }
 
