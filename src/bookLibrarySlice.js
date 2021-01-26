@@ -15,14 +15,13 @@ export const slice = createSlice({
       }
     },
     addSearch: (state, action) => {
-      console.log("addsearch");
-      console.log(action);
       state.searchText = action.payload;
     },
   },
 });
 
 export const { addNewBook } = slice.actions;
+export const { addSearch } = slice.actions;
 
 export const allBooks = (state) => state.library.books;
 export const searchedText = (state) => state.library.searchText;

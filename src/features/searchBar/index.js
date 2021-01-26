@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import addSearch from "../../bookLibrarySlice.js";
+import { addSearch } from "../../bookLibrarySlice.js";
 
 export default function SearchBar() {
   const [searchText, setSearchText] = useState("");
