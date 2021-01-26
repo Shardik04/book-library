@@ -18,6 +18,7 @@ export default function SearchBar() {
         placeholder="Search from below list"
         value={searchText}
         onChange={handleSearchedTextChange}
+        className="search"
       />
     </form>
   );
