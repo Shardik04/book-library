@@ -4,6 +4,7 @@ export const slice = createSlice({
   name: "library",
   initialState: {
     books: [],
+    searchText: "",
   },
   reducers: {
     addNewBook: (state, action) => {
@@ -13,11 +14,17 @@ export const slice = createSlice({
         state.books = [...state.books, action.payload];
       }
     },
+    addSearch: (state, action) => {
+      console.log("addsearch");
+      console.log(action);
+      state.searchText = action.payload;
+    },
   },
 });
 
 export const { addNewBook } = slice.actions;
 
 export const allBooks = (state) => state.library.books;
+export const searchedText = (state) => state.library.searchText;
 
 export default slice.reducer;

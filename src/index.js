@@ -4,7 +4,7 @@ import "./index.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import { useDispatch } from "react-redux";
-import { BookLibrary } from "./BookLibrary";
+import BookList from "./features/bookList";
 import AddNewBook from "./features/addNewBook";
 import Header from "./features/header";
 import EditBook from "./features/editBook";
@@ -18,7 +18,7 @@ const Routing = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={AddNewBook} />
-        <Route path="/allbooks" component={BookLibrary} />
+        <Route path="/allbooks" component={BookList} />
         <Route path="/:id/edit" component={EditBook} />
       </Switch>
     </Router>
@@ -35,7 +35,7 @@ function App() {
   });
 
   return (
-    <div className="books">
+    <div>
       <Routing />
     </div>
   );
